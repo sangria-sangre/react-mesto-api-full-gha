@@ -1,7 +1,8 @@
 class Api {
-    constructor(url, headers) {
-        this._headers = headers;
-        this._baseUrl = url;
+    constructor() {
+        this._headers = '2509058a-382e-4c49-aae4-82e3509c7f6a';
+        this._baseUrl = 'https://mesto.nomoreparties.co/v1/cohort-61';
+        this._baseUrlAuth = 'https://auth.nomoreparties.co';
     }
 
     _getHeaders() {
@@ -94,7 +95,44 @@ class Api {
             return this.deletetLike(id)
         }
     }
+
+    register(email, password)  {
+        return fetch(`${this._baseUrlAuth}/signup`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                password: password,
+                email: email
+            })
+        }).then(this._getJson);
+    }
+
+    authorize = (email, password) => {
+        return fetch(`${this._baseUrlAuth}/signin`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                password: password,
+                email: email
+            })
+        }).then(this._getJson);
+    }
+
+    getContent = (token) => {
+        return fetch(`${this._baseUrlAuth}/users/me`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        }).then(this._getJson);
+    };
+
 }
 
-const api = new Api('https://mesto.nomoreparties.co/v1/cohort-61', '2509058a-382e-4c49-aae4-82e3509c7f6a');
+const api = new Api();
 export default api;

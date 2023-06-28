@@ -1,0 +1,17 @@
+.login__btn {
+    margin: 216px 0 0;
+    padding: 14px 84px;
+    color: #000000;
+    border-radius: 2px;
+    background-color: #ffffff;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.login__btn:hover {
+    background-color: #cccccc;
+}

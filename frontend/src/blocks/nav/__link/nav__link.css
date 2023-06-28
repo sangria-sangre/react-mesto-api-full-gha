@@ -1,0 +1,19 @@
+.nav__link {
+    padding: 0;
+    margin: 0 0 0 24px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.25;
+    color: #ffffff;
+    border: none;
+    background-color: #000000;
+    text-decoration: none;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+}
+
+
+.nav__link:hover {
+    opacity: 0.6;
+}
