@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit')
 const { errors } = require('celebrate');
 const errorHandler = require('./middlewares/error-handler');
+const cors = require('cors');
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -20,6 +21,8 @@ const {
 } = process.env;
 
 const app = express();
+app.use(cors());
+mongoose.connect(MONGO_URL);
 
 app.use(helmet());
 app.use(limiter);
@@ -31,7 +34,6 @@ app.use(router);
 app.use(errors());
 app.use(errorHandler);
 
-mongoose.connect(MONGO_URL);
 app.listen(PORT, () => {
   console.log(`Successful listening of the application on the port ${PORT}`)
 });
