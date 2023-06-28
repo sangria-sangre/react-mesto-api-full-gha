@@ -1,0 +1,9 @@
+.element__column {
+    margin: 0 20px;
+    padding: 0;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

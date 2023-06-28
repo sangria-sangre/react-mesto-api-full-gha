@@ -1,0 +1,23 @@
+.profile__image-edit {
+    padding: 47px;
+    margin: 38.25px 0;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    opacity: 0;
+    background-color: transparent;
+    transition: opacity 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+.profile__image-edit:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1280px) {
+    .profile__image-edit {
+        margin: 40px 0;
+        left: 0;
+    }
+}

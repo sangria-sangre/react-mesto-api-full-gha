@@ -1,0 +1,16 @@
+.profile__image {
+    padding: 0;
+    margin: 0;
+    grid-column: 1/3;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 1280px) {
+    .profile__image {
+        grid-column: 1/2;
+        grid-row: 1/3;
+    }
+}

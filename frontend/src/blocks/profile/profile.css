@@ -1,0 +1,17 @@
+.profile {
+    position: relative;
+    margin: 0;
+    padding: 38.25px 0 36px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(4, auto);
+    justify-items: center;
+}
+
+@media screen and (min-width: 1280px) {
+    .profile {
+        padding: 40px 0 51px;
+        grid-template-columns: repeat(3, min-content) auto;
+        grid-template-rows: repeat(2, auto);
+    }
+}
