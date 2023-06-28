@@ -22,7 +22,6 @@ const {
 
 const app = express();
 app.use(cors());
-mongoose.connect(MONGO_URL);
 
 app.use(helmet());
 app.use(limiter);
@@ -34,6 +33,7 @@ app.use(router);
 app.use(errors());
 app.use(errorHandler);
 
+mongoose.connect(MONGO_URL);
 app.listen(PORT, () => {
   console.log(`Successful listening of the application on the port ${PORT}`)
 });
