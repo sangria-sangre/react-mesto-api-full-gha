@@ -20,7 +20,7 @@ const {
   PORT = 3000,
 } = process.env;
 
-//const app = express();
+const app = express();
 
 app.use(helmet());
 app.use(limiter);
@@ -28,7 +28,7 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors());
+//app.use(cors());
 
 app.use(router);
 app.use(errors());
