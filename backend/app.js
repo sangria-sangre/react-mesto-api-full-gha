@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit')
 const { errors } = require('celebrate');
 const errorHandler = require('./middlewares/error-handler');
-//const cors = require('cors');
+const cors = require('cors')
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -21,13 +21,14 @@ const {
 } = process.env;
 
 const app = express();
-//app.use(cors());
 
 app.use(helmet());
 app.use(limiter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cors());
 
 app.use(router);
 app.use(errors());
