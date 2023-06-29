@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/sangria-sangre/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.112.70
 
-Frontend https://...
+Frontend https://instamesto.nomoreparties.sbs
 
-Backend https://...
+Backend https://api.instamesto.nomoreparties.sbs
