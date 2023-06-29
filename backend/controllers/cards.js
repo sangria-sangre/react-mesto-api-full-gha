@@ -5,7 +5,7 @@ const NotFoundError404 = require('../errors/NotFoundError404');
 
 module.exports.getCards = (req, res, next) => {
   cardSchema.find({})
-    .then((cards) => res.send({ cards }))
+    .then((cards) => res.status(200).send(cards))
     .catch(next);
 };
 
@@ -13,7 +13,7 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   const owner = req.user._id;
   cardSchema.create({ name, link, owner })
-    .then((card) => res.status(201).send({ card }))
+    .then((card) => res.status(201).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError400('Переданы некорректные данные при создании карточки.'));
@@ -27,7 +27,7 @@ module.exports.deleteCard = (req, res, next) => {
   const { cardId } = req.params;
   cardSchema.findById(cardId)
     .then((card) => {
-      if(!card){
+      if (!card) {
         throw new NotFoundError404('Карточка по указанному _id не найдена.');
       }
 
@@ -55,7 +55,7 @@ module.exports.likeCard = (req, res, next) => {
   )
     .orFail(new Error('NotValidId'))
     .then((card) => {
-      res.send({ card })
+      res.send({ data: card })
     })
     .catch((err) => {
       if (err.message === 'NotValidId') {
@@ -76,7 +76,7 @@ module.exports.dislikeCard = (req, res, next) => {
   )
     .orFail(new Error('NotValidId'))
     .then((card) => {
-      res.send({ card })
+      res.send({ data: card })
     })
     .catch((err) => {
       if (err.message === 'NotValidId') {

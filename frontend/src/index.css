@@ -28,6 +28,7 @@
 @import url(./blocks/popup/__loading/_active/popup__loading_active.css);
 @import url(./blocks/popup/__register-image/popup__register-image.css);
 @import url(./blocks/popup/__title/_register/popup__title_register.css);
+@import url(./blocks/popup/__title/_image/popup__title_image.css);
 
 @import url(./blocks/page/page.css);
 

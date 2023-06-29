@@ -16,7 +16,7 @@ module.exports.getUserById = (req, res, next) => {
   userSchema.findById(userId)
     .orFail(new Error('NotValidId'))
     .then((user) => {
-      res.status(200).send({ user });
+      res.status(200).send({ data: user });
     })
     .catch((err) => {
       if (err.message === 'NotValidId') {
@@ -37,7 +37,7 @@ module.exports.createUser = (req, res, next) => {
         name, about, avatar, email,
         password: hash
       })
-        .then(() => res.status(201).send({ email, name, about, avatar, }))
+        .then(() => res.status(201).send({data: { name, about, avatar, email, }}))
         .catch((err) => {
           if (err.code === 11000) {
             return next(new ConflictError409('Пользователь с данным email уже был зарегестрирован.'));
@@ -54,7 +54,7 @@ module.exports.createUser = (req, res, next) => {
 module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
   userSchema.findByIdAndUpdate(req.user._id, { name, about }, { new: true, runValidators: true })
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         return next(new BadRequestError400('Переданы некорректные данные при создании пользователя.'));
@@ -70,7 +70,7 @@ module.exports.updateUser = (req, res, next) => {
 module.exports.updateAvatarUser = (req, res, next) => {
   const { avatar } = req.body;
   userSchema.findByIdAndUpdate(req.user._id, { avatar }, { new: true, runValidators: true })
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         return next(new BadRequestError400('Переданы некорректные данные при создании пользователя.'));

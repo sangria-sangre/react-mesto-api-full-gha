@@ -1,15 +1,8 @@
 class Api {
     constructor() {
-        this._headers = '2509058a-382e-4c49-aae4-82e3509c7f6a';
         this._baseUrl = 'https://api.instamesto.nomoreparties.sbs';
     }
 
-    _getHeaders() {
-        return {
-            authorization: this._headers,
-            'Content-Type': 'application/json'
-        }
-    }
 
     _getJson(res) {
         if (res.ok) {
@@ -23,15 +16,23 @@ class Api {
     }
 
     getUserInfo() {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/users/me`, {
-            headers: this._getHeaders()
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            }
         }).then(this._getJson);
     }
 
     postUserInfo(data) {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
-            headers: this._getHeaders(),
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 name: data.name,
                 about: data.about
@@ -40,9 +41,13 @@ class Api {
     }
 
     postUserPhoto(data) {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
-            headers: this._getHeaders(),
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 avatar: data.avatar,
             })
@@ -50,15 +55,23 @@ class Api {
     }
 
     getCard() {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/cards`, {
-            headers: this._getHeaders()
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            }
         }).then(this._getJson);
     }
 
     postCard(data) {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
-            headers: this._getHeaders(),
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 name: data.name,
                 link: data.link
@@ -67,23 +80,35 @@ class Api {
     }
 
     deleteCard(id) {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/cards/${id}`, {
             method: 'DELETE',
-            headers: this._getHeaders(),
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            }
         }).then(this._getJson);
     }
 
     putLike(id) {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
             method: 'PUT',
-            headers: this._getHeaders(),
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            }
         }).then(this._getJson);
     }
 
     deletetLike(id) {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
             method: 'DELETE',
-            headers: this._getHeaders()
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            }
         }).then(this._getJson);
     }
 
@@ -96,10 +121,12 @@ class Api {
     }
 
     register(email, password) {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 password: password,
@@ -109,10 +136,12 @@ class Api {
     }
 
     authorize = (email, password) => {
+        const token = localStorage.getItem("jwt");
         return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 password: password,
