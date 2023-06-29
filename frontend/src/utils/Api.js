@@ -1,8 +1,7 @@
 class Api {
     constructor() {
         this._headers = '2509058a-382e-4c49-aae4-82e3509c7f6a';
-        this._baseUrl = 'https://mesto.nomoreparties.co/v1/cohort-61';
-        this._baseUrlAuth = 'https://auth.nomoreparties.co';
+        this._baseUrl = 'https://api.instamesto.nomoreparties.sbs';
     }
 
     _getHeaders() {
@@ -97,7 +96,7 @@ class Api {
     }
 
     register(email, password)  {
-        return fetch(`${this._baseUrlAuth}/signup`, {
+        return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -110,7 +109,7 @@ class Api {
     }
 
     authorize = (email, password) => {
-        return fetch(`${this._baseUrlAuth}/signin`, {
+        return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -123,7 +122,7 @@ class Api {
     }
 
     getContent = (token) => {
-        return fetch(`${this._baseUrlAuth}/users/me`, {
+        return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
