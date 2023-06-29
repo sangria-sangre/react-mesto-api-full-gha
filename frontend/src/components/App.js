@@ -90,10 +90,10 @@ function App() {
     <div className="body">
       <div className="page">
         <Routes>
-          <Route path="/" element={<ProtectedRoute element={loggedIn ? MyProfile : Login} loggedIn={loggedIn} />} />
-          <Route path="/profile" element={<ProtectedRoute element={MyProfile} loggedIn={loggedIn} />} />
-          <Route path="/sign-in" element={<Login handleSubmit={handleSubmitLogin} isLoading={isLoading} />} />
-          <Route path="/sign-up" element={<Register handleSubmit={handleSubmitRegister} isLoading={isLoading} />} />
+          <Route path="instamesto.nomoreparties.sbs/" element={<ProtectedRoute element={loggedIn ? MyProfile : Login} loggedIn={loggedIn} />} />
+          <Route path="instamesto.nomoreparties.sbs/profile" element={<ProtectedRoute element={MyProfile} loggedIn={loggedIn} />} />
+          <Route path="instamesto.nomoreparties.sbs/sign-in" element={<Login handleSubmit={handleSubmitLogin} isLoading={isLoading} />} />
+          <Route path="instamesto.nomoreparties.sbs/sign-up" element={<Register handleSubmit={handleSubmitRegister} isLoading={isLoading} />} />
         </Routes>
 
         <InfoTooltrip isOpen={isAuthPopupOpen} status={isAuthStatus} isClose={closePopupAuth} name="auth" />
