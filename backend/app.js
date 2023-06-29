@@ -7,7 +7,7 @@ const rateLimit = require('express-rate-limit')
 const { errors } = require('celebrate');
 const errorHandler = require('./middlewares/error-handler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-//const cors = require('cors')
+const cors = require('cors')
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -29,7 +29,7 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//app.use(cors());
+app.use(cors());
 app.use(requestLogger);
 app.use(router);
 app.use(errorLogger);

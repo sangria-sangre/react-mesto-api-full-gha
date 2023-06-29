@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.112.70
+IP 158.160.112.70
 
 Frontend https://instamesto.nomoreparties.sbs
 
