@@ -27,7 +27,7 @@ function MyProfile() {
         api.getAllData()
             .then(([cards, user]) => {
                 setCurrentUser(user);
-                setCards(cards);
+                setCards(cards.reverse());
             })
             .catch((err) => {
                 console.log(err);
@@ -49,7 +49,7 @@ function MyProfile() {
         const jwt = localStorage.getItem('jwt');
         api.getContent(jwt)
             .then((res) => {
-                setUserEmail(res.data.email);
+                setUserEmail(res.email);
             })
             .catch(err => {
                 console.log(err);
@@ -80,11 +80,11 @@ function MyProfile() {
     }
 
     function handleCardLike(card) {
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some((arr) => arr.some(id => id === currentUser._id));
 
         api.changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
-                setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+                setCards((state) => state.map((c) => c._id === card._id ? newCard.data : c));
             })
             .catch((err) => {
                 console.log(err);
