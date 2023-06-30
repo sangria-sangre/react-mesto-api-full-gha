@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const BadRequestError400 = require('../errors/BadRequestError400');
 const ConflictError409 = require('../errors/ConflictError409');
 const NotFoundError404 = require('../errors/NotFoundError404');
-const { JWT_SECRET } = process.env;
 
 module.exports.getUsers = (req, res, next) => {
   userSchema.find({})
@@ -38,7 +37,7 @@ module.exports.createUser = (req, res, next) => {
         name, about, avatar, email,
         password: hash
       })
-        .then(() => res.status(201).send({ data: { name, about, avatar, email, } }))
+        .then(() => res.status(201).send({data: { name, about, avatar, email, }}))
         .catch((err) => {
           if (err.code === 11000) {
             return next(new ConflictError409('Пользователь с данным email уже был зарегестрирован.'));
