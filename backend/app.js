@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,7 +8,11 @@ const cors = require('cors');
 const { errors } = require('celebrate');
 const errorHandler = require('./middlewares/error-handler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { MONGO_URL,  PORT} = process.env;
+
+const {
+  MONGO_URL = 'mongodb://127.0.0.1:27017/mestodb',
+  PORT = 3000,
+} = process.env;
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
