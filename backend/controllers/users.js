@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
-const userSchema = require('../models/user');
 const jwt = require('jsonwebtoken');
+const userSchema = require('../models/user');
 const BadRequestError400 = require('../errors/BadRequestError400');
 const ConflictError409 = require('../errors/ConflictError409');
 const NotFoundError404 = require('../errors/NotFoundError404');
@@ -36,7 +36,7 @@ module.exports.createUser = (req, res, next) => {
     .then((hash) => {
       userSchema.create({
         name, about, avatar, email,
-        password: hash
+        password: hash,
       })
         .then(() => res.status(201).send({ data: { name, about, avatar, email, } }))
         .catch((err) => {
