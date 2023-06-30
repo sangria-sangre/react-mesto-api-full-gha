@@ -7,7 +7,8 @@ const rateLimit = require('express-rate-limit')
 const { errors } = require('celebrate');
 const errorHandler = require('./middlewares/error-handler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('cors')
+const cors = require('cors');
+const { MONGO_URL, PORT } = require('./config');
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -15,11 +16,6 @@ const limiter = rateLimit({
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
-
-const {
-  MONGO_URL = 'mongodb://127.0.0.1:27017/mestodb',
-  PORT = 3000,
-} = process.env;
 
 const app = express();
 
