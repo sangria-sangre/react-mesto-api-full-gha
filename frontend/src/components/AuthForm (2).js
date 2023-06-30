@@ -6,7 +6,7 @@ function AuthForm(props) {
                     placeholder="Email" required value={props.email} onChange={props.handleChange} />
                 <span className="login__input-error email-input-error"></span>
 
-                <input className="login__input login__input_password" id="password-input" type="text" name="password" noValidate
+                <input className="login__input login__input_password" id="password-input" type="password" name="password" noValidate
                     placeholder="Пароль" required value={props.password} onChange={props.handleChange} minLength="5" maxLength="40" />
                 <span className="login__input-error password-input-error"></span>
                 <button className="login__btn" type="submit">{props.button}</button>

@@ -1,9 +1,10 @@
 import React from 'react';
 
 function Card(props) {
+    console.log(props.card.likes);
+    const isOwn = props.card.owner === props.userId;
+    const isLiked = props.card.likes.some(arr => arr.some(id => id === props.userId));
 
-    const isOwn = props.card.owner._id === props.userId;
-    const isLiked = props.card.likes.some(i => i._id === props.userId);
     const cardLikeButtonClassName = (
         `element__like-btn ${isLiked && 'element__like-btn_active'}`
     );
